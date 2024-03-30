@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".LoginActivity"
+        android:id="@+id/loginRoot">
+
+        <ImageView
+            android:id="@+id/loginBgIv"
+            android:scaleType="fitXY"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <LinearLayout
+            android:id="@+id/loginLanguageContainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="20dp"
+            android:paddingStart="12dp"
+            android:paddingTop="14dp"
+            android:paddingEnd="12dp"
+            android:paddingBottom="14dp"
+            android:background="@drawable/login_lang_bg"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/loginLanguage"
+                style="@style/regular"
+                android:drawablePadding="6dp"
+                android:text="English"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:drawableStartCompat="@drawable/ico_england"
+                app:drawableEndCompat="@drawable/arrow_bottom" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/loginTitle"
+            style="@style/light"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="30dp"
+            android:gravity="start"
+            android:lineHeight="54sp"
+            android:text="Find the perfect\nplace to live"
+            android:textColor="@color/white"
+            android:textSize="40sp"
+            app:layout_constraintTop_toBottomOf="@+id/loginLanguageContainer"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TableRow
+            android:id="@+id/loginBtnTr"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:paddingTop="2dp"
+            android:paddingBottom="2dp"
+            app:layout_constraintBottom_toTopOf="@+id/loginOtherWays">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/loginLoginBtn"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="10dp"
+                android:layout_weight="0.5"
+                android:background="@drawable/login_btn_bg"
+                android:backgroundTint="#D4F7EC"
+                android:fontFamily="@font/medium"
+                android:text="Login"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/loginSignUpBtn"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="20dp"
+                android:layout_weight="0.5"
+                android:background="@drawable/sign_up_btn_bg"
+                android:fontFamily="@font/medium"
+                android:text="Sign Up"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+        </TableRow>
+
+        <TextView
+            android:id="@+id/loginOtherWays"
+            style="@style/regular"
+            android:layout_marginBottom="20dp"
+            android:text="Other ways to sign in"
+            android:textColor="@color/subWhite"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@+id/loginPlatformTr"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TableRow
+            android:id="@+id/loginPlatformTr"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="25dp"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <ImageView
+                android:id="@+id/loginApple"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:background="@drawable/login_platform_bg"
+                android:padding="12dp"
+                android:src="@drawable/ico_apple"
+                app:tint="@color/white" />
+
+            <ImageView
+                android:id="@+id/loginGoogle"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="18dp"
+                android:layout_marginEnd="18dp"
+                android:background="@drawable/login_platform_bg"
+                android:padding="10dp"
+                android:src="@drawable/ico_google" />
+
+            <ImageView
+                android:id="@+id/loginFacebook"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:background="@drawable/login_platform_bg"
+                android:padding="11dp"
+                android:src="@drawable/ico_facebook"
+                app:tint="@color/white" />
+
+        </TableRow>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
