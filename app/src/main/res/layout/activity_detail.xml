@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/black"
+        tools:context=".DetailActivity">
+
+        <ImageView
+            android:id="@+id/detailImg"
+            android:layout_width="match_parent"
+            android:layout_height="370dp"
+            android:scaleType="fitXY"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <RelativeLayout
+            android:id="@+id/detailMenuTr"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/detailBack"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="16dp"
+                android:background="@drawable/detail_menu_bg"
+                android:padding="8dp"
+                android:src="@drawable/arrow_left" />
+
+            <ImageView
+                android:id="@+id/detailShare"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="14dp"
+                android:layout_toStartOf="@+id/detailLike"
+                android:background="@drawable/detail_menu_bg"
+                android:paddingStart="12dp"
+                android:paddingTop="10dp"
+                android:paddingEnd="12dp"
+                android:paddingBottom="15dp"
+                android:src="@drawable/share" />
+
+            <ImageView
+                android:id="@+id/detailLike"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/detail_menu_bg"
+                android:padding="12dp"
+                android:src="@drawable/like" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/detailTitle"
+            style="@style/semiBold"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:gravity="start"
+            android:maxEms="7"
+            android:textSize="34sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/detailImg" />
+
+        <TextView
+            android:id="@+id/detailPrice"
+            style="@style/semiBold"
+            android:layout_width="0dp"
+            android:layout_marginEnd="16dp"
+            android:gravity="end"
+            android:textSize="34sp"
+            app:layout_constraintBottom_toBottomOf="@+id/detailTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/detailTitle"
+            app:layout_constraintTop_toTopOf="@+id/detailTitle" />
+
+        <TextView
+            android:id="@+id/detailAddress"
+            style="@style/regular"
+            android:layout_width="0dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="16dp"
+            android:drawablePadding="3dp"
+            android:ellipsize="marquee"
+            android:gravity="start"
+            android:lines="1"
+            android:src="@drawable/location"
+            android:textColor="@color/subWhite"
+            android:textSize="16sp"
+            app:drawableStartCompat="@drawable/location"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/detailTitle" />
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/detailTabLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="16dp"
+            android:background="@android:color/transparent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/detailAddress"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:tabIndicatorColor="@color/white"
+            app:tabSelectedTextColor="@color/white"
+            app:tabTextAppearance="@style/TabTextAppearance"
+            app:tabTextColor="@color/subWhite">
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/detailTabItemDetails"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Property details" />
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/detailTabItemHistory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Property history" />
+        </com.google.android.material.tabs.TabLayout>
+
+
+        <TextView
+            android:id="@+id/detailTabText"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="16dp"
+            android:gravity="start|top"
+            android:lineHeight="20sp"
+            android:text="New-Construction - Just Completed and Staged in a highly sought-after area. Venetian islands. This home has over 6, 400 Total SF with 5BR/5.5BA designed by Golwen Sanchez - Praxis Architecture Show more"
+            android:textColor="@color/subWhite"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/detailTitle"
+            app:layout_constraintTop_toBottomOf="@+id/detailTabLayout"
+            app:layout_constraintBottom_toTopOf="@+id/detailBtnTr"/>
+
+        <TableRow
+            android:id="@+id/detailBtnTr"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:paddingTop="2dp"
+            android:paddingBottom="2dp"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/detailLoginBtn"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="10dp"
+                android:layout_weight="0.5"
+                android:background="@drawable/login_btn_bg"
+                android:backgroundTint="#C7DAD4"
+                android:fontFamily="@font/medium"
+                android:text="Make an offer"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/detailSignUpBtn"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="20dp"
+                android:layout_weight="0.5"
+                android:background="@drawable/sign_up_btn_bg"
+                android:fontFamily="@font/medium"
+                android:text="Book a tour"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+        </TableRow>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
