@@ -1,9 +1,16 @@
 package app.real.estate
 
-import androidx.appcompat.app.AppCompatActivity
+import android.graphics.Color
+import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.view.View
+import android.view.ViewGroup
+import android.view.ViewOutlineProvider
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import app.real.estate.databinding.ActivityMainBinding
+import eightbitlab.com.blurview.RenderScriptBlur
+
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -14,10 +21,29 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        window.statusBarColor = Color.TRANSPARENT
+
+        UtilClass.fullScreen(this)
+
 
         binding.apply {
             mainRv.adapter = listAdapter
             mainTabLayout.bringToFront()
+
+            mainMenuLinear.bringToFront()
+            val decorView: View = window.decorView
+            val rootView = decorView.findViewById<View>(android.R.id.content) as ViewGroup
+            mainMenuBlur.outlineProvider = ViewOutlineProvider.BACKGROUND
+            mainMenuBlur.clipToOutline = true
+            mainMenuBlur.setBlurEnabled(true)
+            mainMenuBlur.setupWith(rootView, RenderScriptBlur(this@MainActivity))
+                .setBlurRadius(12F)
+
+            mainMenuHome.setOnClickListener {  }
+            mainMenuGps.setOnClickListener {  }
+            mainMenuSearch.setOnClickListener {  }
+            mainMenuChat.setOnClickListener {  }
+            mainMenuPerson.setOnClickListener {  }
         }
 
         listItem.clear()

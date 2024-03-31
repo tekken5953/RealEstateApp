@@ -7,15 +7,19 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@android:color/transparent"
+        android:fitsSystemWindows="true"
         tools:context=".MainActivity">
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/mainTabLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
+            android:background="@android:color/transparent"
             app:layout_constraintTop_toTopOf="parent"
+            app:tabGravity="fill"
             app:tabIndicatorColor="@color/white"
-            app:tabMode="auto"
+            app:tabMode="fixed"
+            app:tabPadding="15dp"
             app:tabSelectedTextColor="@color/white"
             app:tabTextAppearance="@style/TabTextAppearance"
             app:tabTextColor="@color/subWhite">
@@ -45,6 +49,73 @@
             android:layout_height="match_parent"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/list_item_main_rv" />
+
+            <eightbitlab.com.blurview.BlurView
+                android:id="@+id/mainMenuBlur"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                app:blurOverlayColor="#80FFFFFF"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginBottom="50dp"
+                android:background="@drawable/blur_corners"
+                app:layout_constraintBottom_toBottomOf="parent">
+
+                <View
+                    android:id="@+id/mainMenuSelected"
+                    android:layout_width="62dp"
+                    android:layout_height="62dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/main_menu_selected_bg" />
+                <LinearLayout
+                    android:id="@+id/mainMenuLinear"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center">
+                    <ImageView
+                        android:id="@+id/mainMenuHome"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:background="?android:attr/selectableItemBackgroundBorderless"
+                        android:src="@drawable/home" />
+
+                    <ImageView
+                        android:id="@+id/mainMenuGps"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:background="?android:attr/selectableItemBackgroundBorderless"
+                        android:src="@drawable/gps" />
+
+                    <ImageView
+                        android:id="@+id/mainMenuSearch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:background="?android:attr/selectableItemBackgroundBorderless"
+                        android:src="@drawable/search" />
+
+                    <ImageView
+                        android:id="@+id/mainMenuChat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:background="?android:attr/selectableItemBackgroundBorderless"
+                        android:src="@drawable/chat" />
+
+                    <ImageView
+                        android:id="@+id/mainMenuPerson"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.2"
+                        android:background="?android:attr/selectableItemBackgroundBorderless"
+                        android:src="@drawable/person" />
+                </LinearLayout>
+
+
+            </eightbitlab.com.blurview.BlurView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
