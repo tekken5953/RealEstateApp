@@ -5,7 +5,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".LoginActivity"
-        android:id="@+id/loginRoot">
+        android:background="@drawable/login_bg"
+        android:id="@+id/loginRoot"
+        android:fitsSystemWindows="true">
 
         <ImageView
             android:id="@+id/loginBgIv"
