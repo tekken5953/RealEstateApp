@@ -31,32 +31,48 @@
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginStart="16dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/detail_menu_bg"
                 android:padding="8dp"
+                android:scaleType="fitCenter"
                 android:src="@drawable/arrow_left" />
 
             <ImageView
                 android:id="@+id/detailShare"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:layout_marginTop="5dp"
                 android:layout_marginEnd="14dp"
-                android:layout_toStartOf="@+id/detailLike"
+                android:layout_marginBottom="5dp"
+                android:layout_toStartOf="@+id/detailLikeContainer"
                 android:background="@drawable/detail_menu_bg"
                 android:paddingStart="12dp"
                 android:paddingTop="10dp"
                 android:paddingEnd="12dp"
                 android:paddingBottom="15dp"
+                android:scaleType="fitCenter"
                 android:src="@drawable/share" />
 
-            <ImageView
-                android:id="@+id/detailLike"
+            <LinearLayout
+                android:id="@+id/detailLikeContainer"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_alignParentEnd="true"
+                android:layout_marginTop="5dp"
                 android:layout_marginEnd="16dp"
+                android:layout_marginBottom="5dp"
                 android:background="@drawable/detail_menu_bg"
                 android:padding="12dp"
-                android:src="@drawable/like_empty" />
+                android:scaleType="fitCenter">
+
+                <ImageView
+                    android:id="@+id/detailLike"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/like_empty" />
+            </LinearLayout>
+
         </RelativeLayout>
 
         <TextView
@@ -131,31 +147,13 @@
                 android:text="Property history" />
         </com.google.android.material.tabs.TabLayout>
 
-
-        <ScrollView
-            android:id="@+id/detailScroll"
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/detailVp"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="16dp"
-            android:clipToPadding="false"
-            android:overScrollMode="never"
-            android:scrollbars="none"
             app:layout_constraintBottom_toTopOf="@+id/detailBtnTr"
             app:layout_constraintStart_toStartOf="@+id/detailTitle"
-            app:layout_constraintTop_toBottomOf="@+id/detailTabLayout">
-
-            <TextView
-                android:id="@+id/detailTabText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="start|top"
-                android:lineHeight="20sp"
-                android:text="New-Construction - Just Completed and Staged in a highly sought-after area. Venetian islands. This home has over 6, 400 Total SF with 5BR/5.5BA designed by Golwen Sanchez - Praxis Architecture Show more"
-                android:textColor="@color/subWhite"
-                android:textSize="14sp" />
-        </ScrollView>
+            app:layout_constraintTop_toBottomOf="@+id/detailTabLayout" />
 
         <TableRow
             android:id="@+id/detailBtnTr"

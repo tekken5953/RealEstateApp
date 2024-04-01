@@ -34,15 +34,20 @@ class LoginActivity : AppCompatActivity() {
             loginTitle.text = boldSpan
 
             loginLoginBtn.setOnClickListener {
+                vib()
                 val intent = Intent(this@LoginActivity, MainActivity::class.java)
                 startActivity(intent)
                 overridePendingTransition(1,1)
             }
 
-            loginGoogle.setOnClickListener {  }
-            loginFacebook.setOnClickListener {  }
-            loginApple.setOnClickListener {  }
-            loginLanguageContainer.setOnClickListener { }
+            loginGoogle.setOnClickListener { vib() }
+            loginFacebook.setOnClickListener { vib() }
+            loginApple.setOnClickListener { vib() }
+            loginLanguageContainer.setOnClickListener { vib() }
         }
+    }
+
+    private fun vib() {
+        VibrateUtil(this).make(10)
     }
 }

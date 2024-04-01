@@ -43,9 +43,7 @@ class MainRvAdapter(private val context: Context, list: ArrayList<MainItem>) :
 
     override fun getItemCount(): Int = mList.size
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.bind(mList[position])
-    }
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) { holder.bind(mList[position]) }
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val img: ImageView = itemView.findViewById(R.id.listItemMainRvImg)
@@ -72,9 +70,7 @@ class MainRvAdapter(private val context: Context, list: ArrayList<MainItem>) :
                                 .preload()
 
                             val options = ActivityOptions.makeSceneTransitionAnimation(
-                                context as Activity,
-                                img,
-                                "transDetailImg"
+                                context as Activity, img, "transDetailImg"
                             )
 
                             val transition = Explode()

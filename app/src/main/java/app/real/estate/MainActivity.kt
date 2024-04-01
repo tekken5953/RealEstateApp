@@ -72,15 +72,11 @@ class MainActivity : AppCompatActivity() {
                 .setInterpolator(AccelerateDecelerateInterpolator())
                 .setDuration(80 * (fromPosition - toPosition).absoluteValue.toLong())
                 .setListener(object : ViewPropertyAnimatorListenerAdapter() {
-                    override fun onAnimationStart(view: View) {
-                        super.onAnimationStart(view)
-                    }
-
+                    override fun onAnimationStart(view: View) { super.onAnimationStart(view) }
                     override fun onAnimationEnd(view: View) {
                         selectedPosition = toPosition
                     }
-                })
-                .start()
+                }).start()
         }
     }
 }
