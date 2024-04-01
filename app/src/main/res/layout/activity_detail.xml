@@ -3,18 +3,20 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/detailRoot"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/black"
-        tools:context=".DetailActivity"
-        android:fitsSystemWindows="true"
-        android:id="@+id/detailRoot">
+        tools:context=".DetailActivity">
 
         <ImageView
             android:id="@+id/detailImg"
             android:layout_width="match_parent"
             android:layout_height="370dp"
+            android:animationCache="true"
+            android:fitsSystemWindows="true"
             android:scaleType="fitXY"
+            android:transitionName="transDetailImg"
             app:layout_constraintTop_toTopOf="parent" />
 
         <RelativeLayout
@@ -105,13 +107,13 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="30dp"
             android:layout_marginEnd="16dp"
-            app:tabMode="auto"
-            app:tabGravity="start"
-            app:tabPadding="5dp"
             android:background="@android:color/transparent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/detailAddress"
+            app:tabGravity="start"
             app:tabIndicatorColor="@color/white"
+            app:tabMode="auto"
+            app:tabPadding="5dp"
             app:tabSelectedTextColor="@color/white"
             app:tabTextAppearance="@style/TabTextAppearance"
             app:tabTextColor="@color/subWhite">
@@ -134,15 +136,16 @@
             android:id="@+id/detailScroll"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layout_constraintStart_toStartOf="@+id/detailTitle"
-            app:layout_constraintTop_toBottomOf="@+id/detailTabLayout"
-            app:layout_constraintBottom_toTopOf="@+id/detailBtnTr"
             android:layout_marginStart="16dp"
             android:layout_marginTop="12dp"
             android:layout_marginEnd="16dp"
-            android:scrollbars="none"
             android:clipToPadding="false"
-            android:overScrollMode="never">
+            android:overScrollMode="never"
+            android:scrollbars="none"
+            app:layout_constraintBottom_toTopOf="@+id/detailBtnTr"
+            app:layout_constraintStart_toStartOf="@+id/detailTitle"
+            app:layout_constraintTop_toBottomOf="@+id/detailTabLayout">
+
             <TextView
                 android:id="@+id/detailTabText"
                 android:layout_width="match_parent"

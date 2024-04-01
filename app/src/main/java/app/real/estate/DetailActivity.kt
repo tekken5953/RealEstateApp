@@ -2,15 +2,15 @@ package app.real.estate
 
 import android.content.Intent
 import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableStringBuilder
 import android.text.style.ForegroundColorSpan
 import android.text.style.UnderlineSpan
+import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
+import app.real.estate.UtilObject.hideNavBarOnly
 import app.real.estate.databinding.ActivityDetailBinding
-import at.favre.lib.dali.Dali
 import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.CoroutineScope
@@ -25,12 +25,15 @@ class DetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_detail)
-        window.statusBarColor = Color.BLACK
+
+        hideNavBarOnly(this)
 
         binding.apply {
             val imgResExtra = intent.extras?.getInt("img")
             imgResExtra?.let {
-                Glide.with(this@DetailActivity).load(it).into(detailImg)
+                Glide.with(this@DetailActivity)
+                    .load(it)
+                    .into(detailImg)
             }
 
             val titleExtra = intent.extras?.getString("title")
@@ -50,7 +53,7 @@ class DetailActivity : AppCompatActivity() {
 
             detailTabText.text = showMoreSpan
 
-            detailBack.setOnClickListener { finish() }
+            detailBack.setOnClickListener { supportFinishAfterTransition() }
             detailShare.setOnClickListener {
                 val intent = Intent(Intent.ACTION_SEND_MULTIPLE)
                 intent.type = "text/plain"

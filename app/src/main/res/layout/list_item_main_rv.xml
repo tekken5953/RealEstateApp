@@ -7,18 +7,21 @@
         android:id="@+id/listItemMainRvImg"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:animationCache="true"
+        android:background="?android:attr/selectableItemBackground"
+        android:fitsSystemWindows="true"
         android:scaleType="fitXY"
-        android:background="?android:attr/selectableItemBackground"/>
+        android:transitionName="transDetailImg" />
 
     <TextView
         android:id="@+id/listItemMainRvSort"
         style="@style/medium"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:textColor="@color/white"
         android:layout_above="@+id/listItemMainRvTitle"
+        android:layout_centerHorizontal="true"
         android:layout_marginBottom="12dp"
+        android:textColor="@color/white"
         android:textSize="20sp" />
 
     <TextView
@@ -26,19 +29,19 @@
         style="@style/semiBold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/listItemMainRvAddress"
         android:layout_centerHorizontal="true"
-        android:textColor="@color/white"
-        android:textSize="30sp"
         android:layout_marginBottom="12dp"
-        android:layout_above="@+id/listItemMainRvAddress"/>
+        android:textColor="@color/white"
+        android:textSize="30sp" />
 
     <TextView
         android:id="@+id/listItemMainRvAddress"
         style="@style/medium"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
         android:layout_marginBottom="34dp"
         android:textColor="#cccccc"
         android:textSize="15sp" />

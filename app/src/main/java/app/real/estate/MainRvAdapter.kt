@@ -1,7 +1,10 @@
 package app.real.estate
 
+import android.app.Activity
+import android.app.ActivityOptions
 import android.content.Context
 import android.content.Intent
+import android.transition.Explode
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +12,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import at.favre.lib.dali.Dali
+import com.bumptech.glide.Glide
 
 /**
  * @author : Lee Jae Young
@@ -52,6 +56,7 @@ class MainRvAdapter(private val context: Context, list: ArrayList<MainItem>) :
         fun bind(dao: MainItem) {
             Dali.create(context).load(dao.img).skipCache().brightness(-30f)
                 .concurrent().reScale().blurRadius(3).into(img)
+
             title.text = dao.title
             sort.text = dao.sort
             address.text = dao.address
@@ -62,13 +67,27 @@ class MainRvAdapter(private val context: Context, list: ArrayList<MainItem>) :
                 if (position != RecyclerView.NO_POSITION) {
                     try {
                         if (context is MainActivity) {
+                            Glide.with(context)
+                                .load(dao.img)
+                                .preload()
+
+                            val options = ActivityOptions.makeSceneTransitionAnimation(
+                                context as Activity,
+                                img,
+                                "transDetailImg"
+                            )
+
+                            val transition = Explode()
+                            transition.duration = 600
+                            context.window.exitTransition = transition
+
                             val intent = Intent(context, DetailActivity::class.java)
                             intent.putExtra("img", dao.img)
                             intent.putExtra("title", dao.title)
                             intent.putExtra("address",dao.address)
                             intent.putExtra("sort", dao.sort)
                             intent.putExtra("price",dao.price)
-                            context.startActivity(intent)
+                            context.startActivity(intent, options.toBundle())
                         }
                     } catch (e: UninitializedPropertyAccessException) {
                         e.printStackTrace()

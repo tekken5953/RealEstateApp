@@ -1,15 +1,17 @@
 package app.real.estate
 
-import android.graphics.Color
-import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewOutlineProvider
+import android.view.animation.AccelerateDecelerateInterpolator
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.ViewPropertyAnimatorListenerAdapter
 import androidx.databinding.DataBindingUtil
 import app.real.estate.databinding.ActivityMainBinding
 import eightbitlab.com.blurview.RenderScriptBlur
+import kotlin.math.absoluteValue
 
 
 class MainActivity : AppCompatActivity() {
@@ -17,14 +19,13 @@ class MainActivity : AppCompatActivity() {
 
     private val listItem = ArrayList<MainRvAdapter.MainItem>()
     private val listAdapter by lazy { MainRvAdapter(this, listItem) }
+    private var selectedPosition = 0
+    private val menuItems by lazy {listOf(binding.mainMenuHome,binding.mainMenuGps,binding.mainMenuSearch,binding.mainMenuChat,binding.mainMenuPerson)}
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
-        window.statusBarColor = Color.TRANSPARENT
-
-        UtilClass.fullScreen(this)
-
+        UtilObject.hideNavBarOnly(this)
 
         binding.apply {
             mainRv.adapter = listAdapter
@@ -39,14 +40,13 @@ class MainActivity : AppCompatActivity() {
             mainMenuBlur.setupWith(rootView, RenderScriptBlur(this@MainActivity))
                 .setBlurRadius(12F)
 
-            mainMenuHome.setOnClickListener {  }
-            mainMenuGps.setOnClickListener {  }
-            mainMenuSearch.setOnClickListener {  }
-            mainMenuChat.setOnClickListener {  }
-            mainMenuPerson.setOnClickListener {  }
+            mainMenuHome.setOnClickListener { animateBgTrans(selectedPosition, 0) }
+            mainMenuGps.setOnClickListener { animateBgTrans(selectedPosition, 1) }
+            mainMenuSearch.setOnClickListener { animateBgTrans(selectedPosition, 2) }
+            mainMenuChat.setOnClickListener { animateBgTrans(selectedPosition, 3) }
+            mainMenuPerson.setOnClickListener { animateBgTrans(selectedPosition, 4) }
         }
 
-        listItem.clear()
         addRvItem("Single Family", "Hayfiled Ashton Place", "931B 76th Ave E, Tulsa, Ok 76423", R.drawable.house1,420F)
         addRvItem("Fourth Family", "Graslin Place Cambronne", "1098 N Venetine Dr.Mianmi, FL 33139", R.drawable.house2, 568F)
         addRvItem("Double Family", "Ubu Villa Flamboyan", "Jogjakarta Indonesia", R.drawable.house3, 250F)
@@ -58,5 +58,29 @@ class MainActivity : AppCompatActivity() {
         val item = MainRvAdapter.MainItem(sort,img,title,address,price)
         listItem.add(item)
         listAdapter.notifyItemInserted(listItem.lastIndex)
+    }
+
+    private fun animateBgTrans(fromPosition: Int, toPosition: Int) {
+        val fromView: View = menuItems[fromPosition]
+        val toView: View = menuItems[toPosition]
+        val fromX = fromView.x
+        val toX= toView.x
+
+        if (fromPosition != toPosition) {
+            ViewCompat.animate(binding.mainMenuSelected)
+                .translationXBy(toX - fromX)
+                .setInterpolator(AccelerateDecelerateInterpolator())
+                .setDuration(80 * (fromPosition - toPosition).absoluteValue.toLong())
+                .setListener(object : ViewPropertyAnimatorListenerAdapter() {
+                    override fun onAnimationStart(view: View) {
+                        super.onAnimationStart(view)
+                    }
+
+                    override fun onAnimationEnd(view: View) {
+                        selectedPosition = toPosition
+                    }
+                })
+                .start()
+        }
     }
 }
